@@ -17,6 +17,7 @@ const HourlyCronjob = new CronJob(
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
+
     const connection = await getConnection();
 
     HourlyLstStored(timestamp, connection);
