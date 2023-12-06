@@ -1,12 +1,12 @@
-const { Connection, PublicKey } = require('@solana/web3.js');
+const { Connection, PublicKey } = require("@solana/web3.js");
 
-const { RPC_ENDPOINT } = require('../config');
+const { RPC_ENDPOINT } = require("../config");
 
 /* =================================================================
   Created  Connection Function To Intregrate SDK
 ==================================================================== */
 const getConnection = async () => {
-  return new Connection(RPC_ENDPOINT, 'processed');
+  return new Connection(RPC_ENDPOINT, "processed");
 };
 
 /* =================================================================

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const LstHistoricalModel = mongoose.Schema(
   {
@@ -31,9 +31,12 @@ const LstHistoricalModel = mongoose.Schema(
       required: true,
     },
   },
-  { collection: 'lst-historical' }
+  { collection: "lst-historical" }
 );
 
-const LstHistoricalSchema = new mongoose.model('lst-historical', LstHistoricalModel);
+const LstHistoricalSchema = new mongoose.model(
+  "lst-historical",
+  LstHistoricalModel
+);
 
 module.exports = LstHistoricalSchema;

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { lstModelTokens } = require('./model.helper');
+const mongoose = require("mongoose");
+const { lstModelTokens } = require("./model.helper");
 
 const ScoreLstModel = mongoose.Schema(
   {
@@ -9,9 +9,9 @@ const ScoreLstModel = mongoose.Schema(
     },
     ...lstModelTokens,
   },
-  { collection: 'score-lst' }
+  { collection: "score-lst" }
 );
 
-const ScoreLstSchema = new mongoose.model('score-lst', ScoreLstModel);
+const ScoreLstSchema = new mongoose.model("score-lst", ScoreLstModel);
 
 module.exports = ScoreLstSchema;

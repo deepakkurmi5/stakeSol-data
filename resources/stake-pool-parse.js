@@ -1,6 +1,6 @@
-const stakePool = require('@solana/spl-stake-pool');
+const stakePool = require("@solana/spl-stake-pool");
 
-const { getPublicKey } = require('../utils/global');
+const { getPublicKey } = require("../utils/global");
 
 /* =================================================================
       Using Stake SDK to Fetch Stake Pool Info
@@ -12,7 +12,8 @@ const getStakePool = async (key, solPrice, connection) => {
     const stakePoolInfo = await stakePool.stakePoolInfo(connection, publickey);
     const getTotalLamportsaked = stakePoolInfo.totalLamports;
     const totalStaked = parseInt(getTotalLamportsaked, 10);
-    const truePrice = stakePoolInfo.totalLamports / stakePoolInfo.poolTokenSupply;
+    const truePrice =
+      stakePoolInfo.totalLamports / stakePoolInfo.poolTokenSupply;
     const totalStakedUsd = (totalStaked / 10 ** 9) * solPrice;
     return { totalStaked, totalStakedUsd, truePrice };
   } catch (error) {
@@ -35,7 +36,9 @@ const getStakePoolValidatorsInfo = async (key, connection) => {
     const validatorInfoArray = stakePoolInfo.validatorList;
     let totalActiveStakeLamports = 0;
     for (let i = 0; i < validatorInfoArray.length; i++) {
-      totalActiveStakeLamports += parseInt(validatorInfoArray[i].activeStakeLamports);
+      totalActiveStakeLamports += parseInt(
+        validatorInfoArray[i].activeStakeLamports
+      );
     }
     return { validatorInfoArray, totalActiveStakeLamports };
   } catch (error) {

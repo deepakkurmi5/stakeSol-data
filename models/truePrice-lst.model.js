@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { lstModelTokens } = require('./model.helper');
+const mongoose = require("mongoose");
+const { lstModelTokens } = require("./model.helper");
 
 const TruePriceLstModel = mongoose.Schema(
   {
@@ -9,9 +9,12 @@ const TruePriceLstModel = mongoose.Schema(
     },
     ...lstModelTokens,
   },
-  { collection: 'truePrice-lst' }
+  { collection: "truePrice-lst" }
 );
 
-const TruePriceLstSchema = new mongoose.model('truePrice-lst', TruePriceLstModel);
+const TruePriceLstSchema = new mongoose.model(
+  "truePrice-lst",
+  TruePriceLstModel
+);
 
 module.exports = TruePriceLstSchema;

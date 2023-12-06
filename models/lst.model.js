@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const LstModel = mongoose.Schema(
   {
@@ -27,9 +27,9 @@ const LstModel = mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true, collection: 'lst' }
+  { timestamps: true, collection: "lst" }
 );
 
-const LstSchema = new mongoose.model('lst', LstModel);
+const LstSchema = new mongoose.model("lst", LstModel);
 
 module.exports = LstSchema;

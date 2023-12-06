@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { lstModelTokens } = require('./model.helper');
+const mongoose = require("mongoose");
+const { lstModelTokens } = require("./model.helper");
 
 const TotalStkaedLstModel = mongoose.Schema(
   {
@@ -9,9 +9,12 @@ const TotalStkaedLstModel = mongoose.Schema(
     },
     ...lstModelTokens,
   },
-  { collection: 'totalStaked-lst' }
+  { collection: "totalStaked-lst" }
 );
 
-const TotalStkaedLstSchema = new mongoose.model('totalStaked-lst', TotalStkaedLstModel);
+const TotalStkaedLstSchema = new mongoose.model(
+  "totalStaked-lst",
+  TotalStkaedLstModel
+);
 
 module.exports = TotalStkaedLstSchema;

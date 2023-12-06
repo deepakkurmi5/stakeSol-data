@@ -1,19 +1,19 @@
-const { CronJob } = require('cron');
+const { CronJob } = require("cron");
 
-const { getConnection } = require('../utils/global');
+const { getConnection } = require("../utils/global");
 const {
   HourlyLstStored,
   DayLstHistoricalStored,
   HourlyStakingStored,
   DayHistoricalStakingStored,
-} = require('../utils/store-cronjob');
+} = require("../utils/store-cronjob");
 
 /* =================================================
   Runing Cronjob Hourly 0 * * * *
 ================================================= */
 
 const HourlyCronjob = new CronJob(
-  '0 * * * *',
+  "0 * * * *",
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
@@ -24,7 +24,7 @@ const HourlyCronjob = new CronJob(
   },
   null,
   true,
-  'America/Los_Angeles'
+  "America/Los_Angeles"
 );
 
 /* =================================================
@@ -32,7 +32,7 @@ const HourlyCronjob = new CronJob(
 ================================================= */
 
 const DayCronjob = new CronJob(
-  '0 0 * * *',
+  "0 0 * * *",
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
@@ -44,7 +44,7 @@ const DayCronjob = new CronJob(
   },
   null,
   true,
-  'America/Los_Angeles'
+  "America/Los_Angeles"
 );
 
 const CronJobsFunction = () => {

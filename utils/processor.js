@@ -2,7 +2,7 @@ const {
   getStakePoolValidatorsInfo,
   getMarinadeValidatorsInfo,
   getLidoValidatorsInfo,
-} = require('../resources');
+} = require("../resources");
 
 /* =================================================================
   Created Calculate Stake Pool Score
@@ -11,14 +11,13 @@ const {
 const calculateStakePoolScore = async (stakePoolPubkey, connection) => {
   try {
     let score = 0;
-    const { validatorInfoArray, totalActiveStakeLamports } = await getStakePoolValidatorsInfo(
-      stakePoolPubkey,
-      connection
-    );
+    const { validatorInfoArray, totalActiveStakeLamports } =
+      await getStakePoolValidatorsInfo(stakePoolPubkey, connection);
 
     for (let i = 0; i < validatorInfoArray.length; i++) {
       const activeStakeLamports = validatorInfoArray[i].activeStakeLamports;
-      score += activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
+      score +=
+        activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
     }
     return (1 / score) * 100;
   } catch (error) {
@@ -34,11 +33,13 @@ const calculateMarinadeScore = async () => {
   try {
     let score = 0;
 
-    const { validatorInfoArray, totalActiveStakeLamports } = await getMarinadeValidatorsInfo();
+    const { validatorInfoArray, totalActiveStakeLamports } =
+      await getMarinadeValidatorsInfo();
 
     for (let i = 0; i < validatorInfoArray.length; i++) {
       const activeStakeLamports = validatorInfoArray[i].current_stake;
-      score += activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
+      score +=
+        activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
     }
     return (1 / score) * 100;
   } catch (error) {
@@ -57,7 +58,8 @@ const calculateLidoScore = async (connection) => {
       await getLidoValidatorsInfo(connection);
     for (let i = 0; i < validatorInfoArray.length; i++) {
       const activeStakeLamports = validatorInfoArray[i].account.lamports;
-      score += activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
+      score +=
+        activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
     }
     return (1 / score) * 100;
   } catch (error) {
@@ -65,4 +67,8 @@ const calculateLidoScore = async (connection) => {
   }
 };
 
-module.exports = { calculateStakePoolScore, calculateMarinadeScore, calculateLidoScore };
+module.exports = {
+  calculateStakePoolScore,
+  calculateMarinadeScore,
+  calculateLidoScore,
+};

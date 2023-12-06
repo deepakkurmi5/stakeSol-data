@@ -1,11 +1,13 @@
-const { StakeProgram } = require('@solana/web3.js');
+const { StakeProgram } = require("@solana/web3.js");
 
-const StakeModel = require('../models/lst.model');
-const { getSolPrice } = require('./token-prices');
+const StakeModel = require("../models/lst.model");
+const { getSolPrice } = require("./token-prices");
 
 const getTotalStakedSol = async (connection) => {
   try {
-    const stakeAccounts = await connection.getProgramAccounts(StakeProgram.programId);
+    const stakeAccounts = await connection.getProgramAccounts(
+      StakeProgram.programId
+    );
     let totalStaked = 0;
     for (let i = 0; i < stakeAccounts.length; i++) {
       totalStaked += stakeAccounts[i].account.lamports;
@@ -39,7 +41,7 @@ const StakingdApi = async (connection) => {
     const totalLstUsd = (totalLst / 10 ** 9) * solPrice;
     return { totalStaked, totalStakedUsd, totalLst, totalLstUsd };
   } catch (error) {
-    console.log('error', error);
+    console.log("error", error);
     return {
       totalStaked: 0,
       totalStakedUsd: 0,

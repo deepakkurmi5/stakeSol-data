@@ -1,8 +1,8 @@
 // const axios = require('axios');
-const moment = require('moment');
+const moment = require("moment");
 
 // const api = require('../api');
-const LstHistoricalSchema = require('../models/lst.historical.model');
+const LstHistoricalSchema = require("../models/lst.historical.model");
 
 const days = 29;
 
@@ -10,7 +10,7 @@ const getApy = async (symbol) => {
   try {
     if (!symbol) return 0;
 
-    var subtractDate = moment().subtract(days, 'days');
+    var subtractDate = moment().subtract(days, "days");
     var parsesSubtractDate = new Date(subtractDate);
     parsesSubtractDate = Date.parse(parsesSubtractDate);
 
@@ -28,7 +28,10 @@ const getApy = async (symbol) => {
     const oldestTruePrice = findDetails[0].truePrice;
 
     const apy =
-      ((1 + (latestTruePrice - oldestTruePrice) / oldestTruePrice) ** (365 / days) - 1) * 100;
+      ((1 + (latestTruePrice - oldestTruePrice) / oldestTruePrice) **
+        (365 / days) -
+        1) *
+      100;
 
     return apy;
   } catch (error) {

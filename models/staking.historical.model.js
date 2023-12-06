@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const StakingHistoricalModel = mongoose.Schema(
   {
@@ -23,9 +23,12 @@ const StakingHistoricalModel = mongoose.Schema(
       required: true,
     },
   },
-  { collection: 'staking-historical' }
+  { collection: "staking-historical" }
 );
 
-const StakedHistoricalSchema = new mongoose.model('staking-historical', StakingHistoricalModel);
+const StakedHistoricalSchema = new mongoose.model(
+  "staking-historical",
+  StakingHistoricalModel
+);
 
 module.exports = StakedHistoricalSchema;

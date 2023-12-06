@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { lstModelTokens } = require('./model.helper');
+const mongoose = require("mongoose");
+const { lstModelTokens } = require("./model.helper");
 
 const ApyLstModel = mongoose.Schema(
   {
@@ -9,9 +9,9 @@ const ApyLstModel = mongoose.Schema(
     },
     ...lstModelTokens,
   },
-  { collection: 'apy-lst' }
+  { collection: "apy-lst" }
 );
 
-const ApyLstSchema = new mongoose.model('apy-lst', ApyLstModel);
+const ApyLstSchema = new mongoose.model("apy-lst", ApyLstModel);
 
 module.exports = ApyLstSchema;

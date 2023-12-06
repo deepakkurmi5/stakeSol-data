@@ -3,20 +3,20 @@
 ==================================================================== */
 
 const SUCCESS_CODE = 200;
-const SUCCESS_MSG = 'OK.';
+const SUCCESS_MSG = "OK.";
 const ACCEPTED_CODE = 202;
 const BAD_REQ_CODE = 400;
-const BAD_REQ_MSG = 'Bad Request.';
+const BAD_REQ_MSG = "Bad Request.";
 const AUTH_ERR_CODE = 401;
 const FORBIDDEN_CODE = 403;
-const FORBIDDEN_MSG = 'Forbidden';
+const FORBIDDEN_MSG = "Forbidden";
 const NOT_FOUND_CODE = 404;
-const NOT_FOUND_MSG = 'Not Found.';
+const NOT_FOUND_MSG = "Not Found.";
 const NOT_ALLOWED_CODE = 405;
 const CONFLICT_CODE = 409;
-const CONFLICT_MSG = 'Conflict';
+const CONFLICT_MSG = "Conflict";
 const SERVER_ERROR_CODE = 500;
-const SERVER_ERROR_MSG = 'Internal Server Error.';
+const SERVER_ERROR_MSG = "Internal Server Error.";
 
 module.exports = {
   SUCCESS_CODE,

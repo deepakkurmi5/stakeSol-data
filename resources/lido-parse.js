@@ -1,9 +1,9 @@
-const { SolidoSDK } = require('@lidofinance/solido-sdk');
-const { StakeProgram } = require('@solana/web3.js');
+const { SolidoSDK } = require("@lidofinance/solido-sdk");
+const { StakeProgram } = require("@solana/web3.js");
 
-const { CLUSTER_NAME } = require('../config');
-const { getPublicKey } = require('../utils/global');
-const { lido_delegator_account } = require('../constants/public-key');
+const { CLUSTER_NAME } = require("../config");
+const { getPublicKey } = require("../utils/global");
+const { lido_delegator_account } = require("../constants/public-key");
 
 /* =================================================
     Created Functions To Get Data Using Lido SDK
@@ -28,17 +28,20 @@ const getLido = async (solPrice, connection) => {
 const getLidoValidatorsInfo = async (connection) => {
   try {
     const LIDO_DELEGATOR_ACCOUNT = getPublicKey(lido_delegator_account);
-    const validatorInfoArray = await connection.getProgramAccounts(StakeProgram.programId, {
-      commitment: 'confirmed',
-      filters: [
-        {
-          memcmp: {
-            offset: 44,
-            bytes: LIDO_DELEGATOR_ACCOUNT.toBase58(),
+    const validatorInfoArray = await connection.getProgramAccounts(
+      StakeProgram.programId,
+      {
+        commitment: "confirmed",
+        filters: [
+          {
+            memcmp: {
+              offset: 44,
+              bytes: LIDO_DELEGATOR_ACCOUNT.toBase58(),
+            },
           },
-        },
-      ],
-    });
+        ],
+      }
+    );
 
     let totalActiveStakeLamports = 0;
     for (let i = 0; i < validatorInfoArray.length; i++) {

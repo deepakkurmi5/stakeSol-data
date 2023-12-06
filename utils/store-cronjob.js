@@ -1,22 +1,22 @@
-const LstSchema = require('../models/lst.model');
-const LstHistoricalSchema = require('../models/lst.historical.model');
-const StakingSchema = require('../models/staking.model');
-const StakedHistoricalSchema = require('../models/staking.historical.model');
-const ApyLstSchema = require('../models/apy-lst.model');
-const ScoreLstSchema = require('../models/score-lst.model');
-const TotalStkaedLstSchema = require('../models/totalStaked-lst.model');
-const TotalStakedUsdLstSchema = require('../models/totalStakedUsd-lst.model');
-const TruePriceLstSchema = require('../models/truePrice-lst.model');
+const LstSchema = require("../models/lst.model");
+const LstHistoricalSchema = require("../models/lst.historical.model");
+const StakingSchema = require("../models/staking.model");
+const StakedHistoricalSchema = require("../models/staking.historical.model");
+const ApyLstSchema = require("../models/apy-lst.model");
+const ScoreLstSchema = require("../models/score-lst.model");
+const TotalStkaedLstSchema = require("../models/totalStaked-lst.model");
+const TotalStakedUsdLstSchema = require("../models/totalStakedUsd-lst.model");
+const TruePriceLstSchema = require("../models/truePrice-lst.model");
 
-const { lstApi } = require('./historical');
-const { StakingdApi } = require('./staking');
+const { lstApi } = require("./historical");
+const { StakingdApi } = require("./staking");
 const {
   truePriceField,
   totalStakedUsdField,
   totalStakedField,
   apyField,
   scoreField,
-} = require('./util-helper');
+} = require("./util-helper");
 
 const HourlyLstStored = async (timestamp, connection) => {
   const data = await lstApi(timestamp, connection);
@@ -52,15 +52,15 @@ const DayLstHistoricalStored = async (timestamp, connection) => {
       const element = data[i];
       const store = new LstHistoricalSchema(element);
       await store.save();
-      truePrice['timestamp'] = element.timestamp;
+      truePrice["timestamp"] = element.timestamp;
       truePrice[element.symbol] = element.truePrice;
-      totalStakedUsd['timestamp'] = element.timestamp;
+      totalStakedUsd["timestamp"] = element.timestamp;
       totalStakedUsd[element.symbol] = element.totalStakedUsd;
-      totalStaked['timestamp'] = element.timestamp;
+      totalStaked["timestamp"] = element.timestamp;
       totalStaked[element.symbol] = element.totalStaked;
-      score['timestamp'] = element.timestamp;
+      score["timestamp"] = element.timestamp;
       score[element.symbol] = element.score;
-      apy['timestamp'] = element.timestamp;
+      apy["timestamp"] = element.timestamp;
       apy[element.symbol] = element.apy;
     }
     const truePriceLStore = new TruePriceLstSchema(truePrice);
@@ -79,7 +79,7 @@ const DayLstHistoricalStored = async (timestamp, connection) => {
 const HourlyStakingStored = async (connection) => {
   const data = await StakingdApi(connection);
 
-  const findElement = await StakingSchema.findOne({ key: 'staking' });
+  const findElement = await StakingSchema.findOne({ key: "staking" });
   if (findElement) {
     await StakingSchema.findOneAndUpdate(
       { key: findElement.key },

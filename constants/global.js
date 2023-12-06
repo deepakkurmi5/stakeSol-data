@@ -8,7 +8,7 @@ const {
   eSOL,
   cgntSOL,
   LST,
-} = require('./public-key');
+} = require("./public-key");
 
 /* =================================================
   Stake Pool Map List

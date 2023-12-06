@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const { MONGODB_URL } = require('../config');
+const { MONGODB_URL } = require("../config");
 
-mongoose.set('strictQuery', false);
+mongoose.set("strictQuery", false);
 
 const connection = {};
 
@@ -12,7 +12,7 @@ const connection = {};
 
 async function connect() {
   if (connection.isConnected) {
-    console.log('already connected to DB');
+    console.log("already connected to DB");
     return;
   }
 
@@ -20,7 +20,7 @@ async function connect() {
     connect.isConnected = mongoose.connections[0].readyState;
 
     if (connection.isConnected === 1) {
-      console.log('use previous connection DB');
+      console.log("use previous connection DB");
       return;
     }
     await mongoose.disconnect();
@@ -31,7 +31,7 @@ async function connect() {
     useUnifiedTopology: true,
   });
 
-  console.log('new DB connection ');
+  console.log("new DB connection ");
   connection.isConnected = db.connections[0].readyState;
 }
 
@@ -41,11 +41,11 @@ async function connect() {
 
 async function disconnect() {
   if (connection.isConnected) {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       await mongoose.disconnect();
       connection.isConnected = false;
     } else {
-      console.log('not diconnected DB');
+      console.log("not diconnected DB");
     }
   }
 }

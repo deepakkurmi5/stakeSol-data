@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const StakingModel = mongoose.Schema(
   {
     key: {
       type: String,
-      default: 'staking',
+      default: "staking",
       required: true,
     },
     totalStaked: {
@@ -24,9 +24,9 @@ const StakingModel = mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true, collection: 'staking' }
+  { timestamps: true, collection: "staking" }
 );
 
-const StakingSchema = new mongoose.model('staking', StakingModel);
+const StakingSchema = new mongoose.model("staking", StakingModel);
 
 module.exports = StakingSchema;

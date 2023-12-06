@@ -1,6 +1,9 @@
-const { Marinade, MarinadeConfig } = require('@marinade.finance/marinade-ts-sdk');
+const {
+  Marinade,
+  MarinadeConfig,
+} = require("@marinade.finance/marinade-ts-sdk");
 
-const { getMarinadeStakeingPrice } = require('../utils/token-prices');
+const { getMarinadeStakeingPrice } = require("../utils/token-prices");
 
 /* =================================================================
     Created  GetMarinade Functions To Get Data Using Marinade SDK
