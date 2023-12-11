@@ -47,9 +47,9 @@ app.set("port", port);
 
 const server = http.createServer(app);
 
+CronJobsFunction();
+
 module.exports = {
   server,
   port,
 };
-
-CronJobsFunction();
