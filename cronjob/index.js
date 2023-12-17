@@ -33,7 +33,7 @@ const HourlyCronjob = new CronJob(
 ================================================= */
 
 const DayCronjob = new CronJob(
-  "0 */3 * * *",
+  "0 0 */1 * *",
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
