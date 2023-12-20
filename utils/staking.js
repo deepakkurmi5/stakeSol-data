@@ -35,13 +35,14 @@ const getTotalLstSol = async () => {
 const StakingdApi = async (connection) => {
   try {
     const solPrice = await getSolPrice();
+
     const totalStaked = await getTotalStakedSol(connection);
     const totalLst = await getTotalLstSol();
     const totalStakedUsd = (totalStaked / 10 ** 9) * solPrice;
     const totalLstUsd = (totalLst / 10 ** 9) * solPrice;
+
     return { totalStaked, totalStakedUsd, totalLst, totalLstUsd };
   } catch (error) {
-    console.log("error", error);
     return {
       totalStaked: 0,
       totalStakedUsd: 0,

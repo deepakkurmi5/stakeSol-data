@@ -20,8 +20,8 @@ const HourlyCronjob = new CronJob(
 
     const connection = await getConnection();
 
-    HourlyLstStored(timestamp, connection);
-    HourlyStakingStored(connection);
+    await HourlyLstStored(timestamp, connection);
+    await HourlyStakingStored(connection);
   },
   null,
   true,
@@ -40,8 +40,8 @@ const DayCronjob = new CronJob(
 
     const connection = await getConnection();
 
-    DayLstHistoricalStored(timestamp, connection);
-    DayHistoricalStakingStored(timestamp, connection);
+    await DayHistoricalStakingStored(timestamp, connection);
+    await DayLstHistoricalStored(timestamp, connection);
   },
   null,
   true,
