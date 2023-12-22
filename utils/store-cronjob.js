@@ -73,7 +73,9 @@ const DayLstHistoricalStored = async (timestamp, connection) => {
     await totoalStakedStore.save();
     await scoreStore.save();
     await apyStore.save();
-  } catch (error) {}
+  } catch (error) {
+    console.log("DayLstHistoricalStored", error);
+  }
 };
 
 const HourlyStakingStored = async (connection) => {
@@ -106,6 +108,7 @@ const DayHistoricalStakingStored = async (timestamp, connection) => {
     });
     await stored.save();
   } catch (error) {
+    console.log("DayHistoricalStakingStored", error);
     const stored = new StakedHistoricalSchema({
       timestamp: timestamp,
       totalStaked: 0,

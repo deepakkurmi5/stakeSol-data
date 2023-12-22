@@ -38,10 +38,12 @@ const DayCronjob = new CronJob(
     var d = new Date();
     var timestamp = Date.parse(d);
 
+    console.log("DayCronjob timestamp", timestamp);
+
     const connection = await getConnection();
 
-    await DayHistoricalStakingStored(timestamp, connection);
     await DayLstHistoricalStored(timestamp, connection);
+    await DayHistoricalStakingStored(timestamp, connection);
   },
   null,
   true,

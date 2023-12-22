@@ -17,6 +17,7 @@ const getStakePool = async (key, solPrice, connection) => {
     const totalStakedUsd = (totalStaked / 10 ** 9) * solPrice;
     return { totalStaked, totalStakedUsd, truePrice };
   } catch (error) {
+    console.log("getStakePool", error);
     return {
       totalStaked: 0,
       totalStakedUsd: 0,
@@ -42,6 +43,7 @@ const getStakePoolValidatorsInfo = async (key, connection) => {
     }
     return { validatorInfoArray, totalActiveStakeLamports };
   } catch (error) {
+    console.log("getStakePoolValidatorsInfo", error);
     return {
       validatorInfoArray: [],
       totalActiveStakeLamports: 0,

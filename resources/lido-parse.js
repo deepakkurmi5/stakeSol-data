@@ -17,6 +17,7 @@ const getLido = async (solPrice, connection) => {
     const totalStakedUsd = (totalStaked / 10 ** 9) * solPrice;
     return { totalStaked, totalStakedUsd, truePrice };
   } catch (error) {
+    console.log("getLido", error);
     return { totalStaked: 0, totalStakedUsd: 0, truePrice: 0 };
   }
 };
@@ -50,6 +51,7 @@ const getLidoValidatorsInfo = async (connection) => {
 
     return { validatorInfoArray, totalActiveStakeLamports };
   } catch (error) {
+    console.log("getLidoValidatorsInfo", error);
     return {
       validatorInfoArray: [],
       totalActiveStakeLamports: 0,

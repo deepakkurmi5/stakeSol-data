@@ -21,6 +21,7 @@ const calculateStakePoolScore = async (stakePoolPubkey, connection) => {
     }
     return (1 / score) * 100;
   } catch (error) {
+    console.log("calculateStakePoolScore", error);
     return 0;
   }
 };
@@ -43,6 +44,7 @@ const calculateMarinadeScore = async () => {
     }
     return (1 / score) * 100;
   } catch (error) {
+    console.log("calculateMarinadeScore", error);
     return 0;
   }
 };
@@ -63,6 +65,7 @@ const calculateLidoScore = async (connection) => {
     }
     return (1 / score) * 100;
   } catch (error) {
+    console.log("calculateLidoScore", error);
     return 0;
   }
 };

@@ -35,6 +35,7 @@ const getApy = async (symbol) => {
 
     return apy;
   } catch (error) {
+    console.log("getApy", error);
     return 0;
   }
 };

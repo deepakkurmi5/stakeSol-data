@@ -9,11 +9,12 @@ const getTotalStakedSol = async (connection) => {
       StakeProgram.programId
     );
     let totalStaked = 0;
-    for (let i = 0; i < stakeAccounts.length; i++) {
+    for (let i = 0; i < stakeAccounts?.length; i++) {
       totalStaked += stakeAccounts[i].account.lamports;
     }
     return totalStaked;
   } catch (error) {
+    console.log("getTotalStakedSol", error);
     return 0;
   }
 };
@@ -23,11 +24,12 @@ const getTotalLstSol = async () => {
     const lstData = await StakeModel.find();
     if (!lstData || lstData.length === 0) return 0;
     let totalLst = 0;
-    for (let i = 0; i < lstData.length; i++) {
+    for (let i = 0; i < lstData?.length; i++) {
       totalLst += lstData[i].totalStaked;
     }
     return totalLst;
   } catch (error) {
+    console.log("getTotalLstSol", error);
     return 0;
   }
 };
@@ -43,6 +45,7 @@ const StakingdApi = async (connection) => {
 
     return { totalStaked, totalStakedUsd, totalLst, totalLstUsd };
   } catch (error) {
+    console.log("StakingdApi", error);
     return {
       totalStaked: 0,
       totalStakedUsd: 0,
