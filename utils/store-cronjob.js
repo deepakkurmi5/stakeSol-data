@@ -79,19 +79,24 @@ const DayLstHistoricalStored = async (timestamp, connection) => {
 };
 
 const HourlyStakingStored = async (connection) => {
-  const data = await StakingdApi(connection);
+  try {
+    const data = await StakingdApi(connection);
 
-  const findElement = await StakingSchema.findOne({ key: "staking" });
-  if (findElement) {
-    await StakingSchema.findOneAndUpdate(
-      { key: findElement.key },
-      {
-        ...data,
-      }
-    );
-  } else {
-    const store = new StakingSchema(data);
-    await store.save();
+    const findElement = await StakingSchema.findOne({ key: "staking" });
+
+    if (findElement) {
+      await StakingSchema.findOneAndUpdate(
+        { key: findElement.key },
+        {
+          ...data,
+        }
+      );
+    } else {
+      const store = new StakingSchema(data);
+      await store.save();
+    }
+  } catch (error) {
+    console.log("HourlyStakingStored error", error);
   }
 };
 

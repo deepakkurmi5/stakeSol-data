@@ -13,7 +13,7 @@ const {
 ================================================= */
 
 const HourlyCronjob = new CronJob(
-  "0 */1 * * *",
+  "0 */2 * * *",
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
@@ -37,8 +37,6 @@ const DayCronjob = new CronJob(
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
-
-    console.log("DayCronjob timestamp", timestamp);
 
     const connection = await getConnection();
 
