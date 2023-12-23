@@ -11,15 +11,15 @@
   Demo Configrations for local - one
 ==================================================================== */
 
-// const MONGODB_URL =
-//   "mongodb+srv://demo:VlSyaHvrPwe4Rxle@cluster0.cdo07gt.mongodb.net/demo";
+const MONGODB_URL =
+  "mongodb+srv://demo:VlSyaHvrPwe4Rxle@cluster0.cdo07gt.mongodb.net/demo";
 
 /* =================================================================
   Demo Configrations for local - two
 ==================================================================== */
 
-const MONGODB_URL =
-  "mongodb+srv://deepakkurmi874:IChoiIPjBRxJISGE@cluster0.kk6sleb.mongodb.net/stake-demo";
+// const MONGODB_URL =
+//   "mongodb+srv://deepakkurmi874:IChoiIPjBRxJISGE@cluster0.kk6sleb.mongodb.net/stake-demo";
 
 /* =================================================================
   Created Contract Configrations
