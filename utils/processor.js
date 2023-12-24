@@ -14,14 +14,14 @@ const calculateStakePoolScore = async (stakePoolPubkey, connection) => {
     const { validatorInfoArray, totalActiveStakeLamports } =
       await getStakePoolValidatorsInfo(stakePoolPubkey, connection);
 
-    for (let i = 0; i < validatorInfoArray.length; i++) {
-      const activeStakeLamports = validatorInfoArray[i].activeStakeLamports;
+    validatorInfoArray.forEach((element) => {
+      const activeStakeLamports = element.activeStakeLamports;
       score +=
         activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
-    }
+    });
+
     return (1 / score) * 100;
   } catch (error) {
-    console.log("calculateStakePoolScore", error);
     return 0;
   }
 };
@@ -37,14 +37,13 @@ const calculateMarinadeScore = async () => {
     const { validatorInfoArray, totalActiveStakeLamports } =
       await getMarinadeValidatorsInfo();
 
-    for (let i = 0; i < validatorInfoArray.length; i++) {
-      const activeStakeLamports = validatorInfoArray[i].current_stake;
+    validatorInfoArray.forEach((element) => {
+      const activeStakeLamports = element.current_stake;
       score +=
         activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
-    }
+    });
     return (1 / score) * 100;
   } catch (error) {
-    console.log("calculateMarinadeScore", error);
     return 0;
   }
 };
@@ -58,14 +57,15 @@ const calculateLidoScore = async (connection) => {
     let score = 0;
     const { validatorInfoArray, totalActiveStakeLamports } =
       await getLidoValidatorsInfo(connection);
-    for (let i = 0; i < validatorInfoArray.length; i++) {
-      const activeStakeLamports = validatorInfoArray[i].account.lamports;
+
+    validatorInfoArray.forEach((element) => {
+      const activeStakeLamports = element.account.lamports;
       score +=
         activeStakeLamports / (totalActiveStakeLamports - activeStakeLamports);
-    }
+    });
+
     return (1 / score) * 100;
   } catch (error) {
-    console.log("calculateLidoScore", error);
     return 0;
   }
 };

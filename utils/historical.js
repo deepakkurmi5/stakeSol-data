@@ -51,7 +51,6 @@ const lstApi = async (timestamp, connection) => {
 
     return collectList;
   } catch (error) {
-    console.log("lstApi", error);
     return [];
   }
 };

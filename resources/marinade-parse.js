@@ -21,7 +21,6 @@ const getMarinade = async (solPrice, connection) => {
     const totalStakedUsd = (totalStaked / 10 ** 9) * solPrice;
     return { totalStaked, totalStakedUsd, truePrice };
   } catch (error) {
-    console.log("getMarinade", error);
     return {
       totalStaked: 0,
       totalStakedUsd: 0,
@@ -38,12 +37,13 @@ const getMarinadeValidatorsInfo = async () => {
   try {
     const validatorInfoArray = await getMarinadeStakeingPrice();
     let totalActiveStakeLamports = 0;
-    for (let i = 0; i < validatorInfoArray.length; i++) {
-      totalActiveStakeLamports += validatorInfoArray[i].current_stake;
-    }
+
+    validatorInfoArray.forEach((element) => {
+      totalActiveStakeLamports += element.current_stake;
+    });
+
     return { validatorInfoArray, totalActiveStakeLamports };
   } catch (error) {
-    console.log("getMarinadeValidatorsInfo", error);
     return {
       validatorInfoArray: [],
       totalActiveStakeLamports: 0,
