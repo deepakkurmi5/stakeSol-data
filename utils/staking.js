@@ -5,21 +5,21 @@ const { getSolPrice } = require("./token-prices");
 
 const getTotalStakedSol = async (connection) => {
   try {
-    console.log("getTotalStakedSol start");
+    // console.log("getTotalStakedSol start");
     const stakeAccounts = await connection.getProgramAccounts(
       StakeProgram.programId
     );
 
-    console.log("stakeAccounts length", stakeAccounts.length);
+    // console.log("stakeAccounts length", stakeAccounts.length);
 
     const totalStaked = stakeAccounts.reduce((acc, value) => {
       return (acc += value.account.lamports);
     }, 0);
-    console.log(totalStaked);
+    // console.log(totalStaked);
 
     return totalStaked;
   } catch (error) {
-    console.log("getTotalStakedSol error", error);
+    // console.log("getTotalStakedSol error", error);
     return 0;
   }
 };
