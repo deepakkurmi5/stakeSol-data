@@ -13,7 +13,7 @@ const {
 ================================================= */
 
 const HourlyCronjob = new CronJob(
-  "*/2 * * * *",
+  "*/5 * * * *",
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
