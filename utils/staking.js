@@ -8,10 +8,11 @@ const getTotalStakedSol = async (connection) => {
     const stakeAccounts = await connection.getProgramAccounts(
       StakeProgram.programId
     );
-    let totalStaked = 0;
-    stakeAccounts.forEach((element) => {
-      totalStaked += element.account.lamports;
-    });
+
+    const totalStaked = stakeAccounts.reduce((acc, value) => {
+      return (acc += value.account.lamports);
+    }, 0);
+
     return totalStaked;
   } catch (error) {
     return 0;
