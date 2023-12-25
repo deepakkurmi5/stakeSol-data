@@ -2,10 +2,10 @@ const { CronJob } = require("cron");
 
 const { getConnection } = require("../utils/global");
 const {
-  HourlyLstStored,
-  DayLstHistoricalStored,
+  // HourlyLstStored,
+  // DayLstHistoricalStored,
   HourlyStakingStored,
-  DayHistoricalStakingStored,
+  // DayHistoricalStakingStored,
 } = require("../utils/store-cronjob");
 
 /* =================================================
@@ -13,14 +13,16 @@ const {
 ================================================= */
 
 const HourlyCronjob = new CronJob(
-  "0 * * * *",
+  "*/2 * * * *",
   async () => {
     var d = new Date();
     var timestamp = Date.parse(d);
 
+    console.log("timestamp", timestamp);
+
     const connection = await getConnection();
 
-    await HourlyLstStored(timestamp, connection);
+    // await HourlyLstStored(timestamp, connection);
     await HourlyStakingStored(connection);
   },
   null,
@@ -32,25 +34,25 @@ const HourlyCronjob = new CronJob(
   Runing Cronjob  Everydayey 0 0 * * *
 ================================================= */
 
-const DayCronjob = new CronJob(
-  "0 0 * * *",
-  async () => {
-    var d = new Date();
-    var timestamp = Date.parse(d);
+// const DayCronjob = new CronJob(
+//   "0 0 * * *",
+//   async () => {
+//     var d = new Date();
+//     var timestamp = Date.parse(d);
 
-    const connection = await getConnection();
+//     const connection = await getConnection();
 
-    await DayLstHistoricalStored(timestamp, connection);
-    await DayHistoricalStakingStored(timestamp, connection);
-  },
-  null,
-  true,
-  "America/Los_Angeles"
-);
+//     await DayLstHistoricalStored(timestamp, connection);
+//     await DayHistoricalStakingStored(timestamp, connection);
+//   },
+//   null,
+//   true,
+//   "America/Los_Angeles"
+// );
 
 const CronJobsFunction = () => {
   HourlyCronjob.start();
-  DayCronjob.start();
+  // DayCronjob.start();
 };
 
 module.exports = CronJobsFunction;
