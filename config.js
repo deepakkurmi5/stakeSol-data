@@ -2,17 +2,17 @@
   Created MongoDB Configrations and Secure Private Variables 
 ==================================================================== */
 
-// const MONGODB_USERNAME = process.env.MONGODB_USERNAME;
-// const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
-// const MONGODB_COLLECTION_NAME = process.env.MONGODB_COLLECTION_NAME;
-// const MONGODB_URL = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@stake-sol-api.5iszpyt.mongodb.net/${MONGODB_COLLECTION_NAME}`;
+const MONGODB_USERNAME = process.env.MONGODB_USERNAME;
+const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
+const MONGODB_COLLECTION_NAME = process.env.MONGODB_COLLECTION_NAME;
+const MONGODB_URL = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@stake-sol-api.5iszpyt.mongodb.net/${MONGODB_COLLECTION_NAME}`;
 
 /* =================================================================
   Demo Configrations for local - one
 ==================================================================== */
 
-const MONGODB_URL =
-  "mongodb+srv://demo:VlSyaHvrPwe4Rxle@cluster0.cdo07gt.mongodb.net/demo";
+// const MONGODB_URL =
+//   "mongodb+srv://demo:VlSyaHvrPwe4Rxle@cluster0.cdo07gt.mongodb.net/demo";
 
 /* =================================================================
   Demo Configrations for local - two

@@ -80,7 +80,7 @@ const HourlyStakingStored = async (connection) => {
   try {
     const data = await StakingdApi(connection);
 
-    // const findElement = await StakingSchema.findOne({ key: "staking" });
+    const findElement = await StakingSchema.findOne({ key: "staking" });
 
     if (findElement) {
       await StakingSchema.findOneAndUpdate(
